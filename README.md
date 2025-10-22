@@ -14,7 +14,7 @@ Su objetivo es integrar, limpiar y analizar datos de ventas mediante un conjunto
 
 
 ```
-Proyecto Aurelion/
+AurelionProyecto/
 │
 ├── README.md                      # Este archivo
 ├── Informe.md                     # Documento principal del proyecto
@@ -53,7 +53,7 @@ pip install pandas numpy openpyxl matplotlib seaborn
 2. Navegá hasta la carpeta del proyecto:
 
    ```bash
-   cd "ruta\a\Proyecto Aurelion"
+   cd "ruta\a\AurelionProyecto"
    ```
 3. Ejecutá el programa interactivo:
 
@@ -92,13 +92,13 @@ pip install pandas numpy openpyxl matplotlib seaborn
 ---
 
 ### 💬 Créditos
-
-📌 **Autora:** Nancy Vargas
-🎓 **Curso:** Fundamentos de Inteligencia Artificial – Guayerd & IBM SkillsBuild
-📅 **Año:** 2025
-💻 **Lenguaje:** Python 3.x
-📚 **Temática:** Integración y análisis de datos de ventas
-🎨 **Formatos:** CLI + Jupyter Notebook
-
+```
+📌 Autora: Nancy Vargas
+🎓 Curso: Fundamentos de Inteligencia Artificial – Guayerd & IBM SkillsBuild
+📅 Año: 2025
+💻 Lenguaje: Python 3.
+📚 Temática: Integración y análisis de datos de ventas
+🎨 Formatos: CLI + Jupyter Notebook
+```
 ---
 
