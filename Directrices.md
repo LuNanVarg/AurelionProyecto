@@ -45,15 +45,15 @@ AurelionProyecto/
 
 ## 🟡 Verificación de Archivos
 
-| Archivo                  | Función                               |
-| ------------------------ | ------------------------------------- |
-| `ExploradorDoc.py`       | Programa interactivo de documentación |
-| `InteractivoLeer.py`     | Módulo de lectura y carga de archivos |
-| `LeerArchivo.py`         | Módulo de lectura y carga de archivos |
-| `AnalisisVenta.ipynb`    | Notebook con visualizaciones y KPIs   |
-| `Aurelion/`              | Carpeta con archivos de datos (`csv`) |
-| `FlujoDelProceso.drawio` | Diagrama de flujo del programa        |
-| `Informe.md`             | Documento principal del proyecto      |
+| Archivo                          | Función                               |
+| -------------------------------- | ------------------------------------- |
+| `ExploradorDoc.py`               | Programa interactivo de documentación |
+| `Interactivo_LeerArchivo.py`     | Módulo de lectura y carga de archivos |
+| `LeerArchivo.py`                 | Módulo de lectura y carga de archivos |
+| `AnalisisVenta.ipynb`            | Notebook con visualizaciones y KPIs   |
+| `Aurelion/`                      | Carpeta con archivos de datos (`csv`) |
+| `FlujoDelProceso.drawio`         | Diagrama de flujo del programa        |
+| `Informe.md`                     | Documento principal del proyecto      |
 
 ---
 
@@ -136,4 +136,5 @@ Antes de generar análisis o reportes, verificar:
 📚 **Temática:** Integración y análisis de datos de ventas
 
 ---
+
 
