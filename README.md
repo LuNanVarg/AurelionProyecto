@@ -18,11 +18,11 @@ AurelionProyecto/
 │
 ├── README.md                      # Este archivo
 ├── Informe.md                     # Documento principal del proyecto
-├── Directrices.md                 # Registro del análisis y mejoras sugeridas por IA
-│
+├── Directrices.md                 # Registro del análisis y mejoras
+├── InteractivoLeer.py             # Módulo para lectura y carga de archivos
 ├── ExploradorDoc.py               # Navegador interactivo de documentación (terminal)
-├── leerArchivo.py                 # Módulo para lectura y carga de archivos
-├── Aurelion-Interfaz.ipynb        # Versión interactiva con widgets y gráficos
+├── LeerArchivo.py                 # Módulo para lectura y carga de archivos
+├── AnalisisVenta.ipynb            # Notebook interactivo con gráficos y KPIs
 │
 ├── FlujoDelProceso.drawio         # Diagrama del flujo del programa
 │
@@ -47,7 +47,7 @@ pip install pandas numpy openpyxl matplotlib seaborn
 
 ---
 
-🚀 Cómo ejecutar el proyecto
+### 🚀 Cómo ejecutar el proyecto
 🖥️ Modo terminal
 1. Abrí una terminal (CMD, PowerShell o desde Visual Studio Code).
 2. Navegá hasta la carpeta del proyecto:
@@ -58,14 +58,14 @@ pip install pandas numpy openpyxl matplotlib seaborn
 3. Ejecutá el programa interactivo:
 
    ```bash
-   python exploradorDoc.py
+   python ExploradorDoc.py
    ```
 
 ---
 
 ### 📊 Modo interactivo (Jupyter Notebook) 
 
-1. Abrí Jupyter y cargá el archivo Aurelion-Interfaz.ipynb.
+1. Abrí Jupyter y cargá el archivo AnalisisVenta.ipynbb
 2. Ejecutá las celdas en orden para explorar los datos, generar gráficos y navegar por la
    documentación mediante widgets interactivos.
 
