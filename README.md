@@ -19,7 +19,7 @@ AurelionProyecto/
 ├── README.md                      # Este archivo
 ├── Informe.md                     # Documento principal del proyecto
 ├── Directrices.md                 # Registro del análisis y mejoras
-├── InteractivoLeer.py             # Módulo para lectura y carga de archivos
+├── Interactivo_LeerArchivo.py     # Módulo para lectura y carga de archivos
 ├── ExploradorDoc.py               # Navegador interactivo de documentación (terminal)
 ├── LeerArchivo.py                 # Módulo para lectura y carga de archivos
 ├── AnalisisVenta.ipynb            # Notebook interactivo con gráficos y KPIs
