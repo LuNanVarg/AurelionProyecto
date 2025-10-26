@@ -1,71 +1,73 @@
-
-# 🌟 Información del Proyecto Aurelion 
+# 🌟 Informe del Proyecto Aurelion
 
 ---
 
-## 🟢 1. Preparación del entorno y archivos
+## 🟢 1. Preparación del Entorno y Archivos
 
 ### ✅ Pasos iniciales
-1. Crear carpeta **Carlos Padilla - Proyecto Aurelion**  
-2. Descargar archivos `.xlsx` desde Google Drive  
-3. Abrir carpeta en VS Code → **Add Folder to Workspace**  
-4. Revisar estructura de datos de cada archivo  
-5. Crear archivo `.md` para documentar el proyecto  
 
-> 💡 Tip: Mantener los archivos originales intactos para respaldos
+* Crear carpeta `AurelionProyecto/`
+* Colocar los archivos `.csv` dentro de `Aurelion/`
+* Abrir carpeta en VS Code → **Add Folder to Workspace**
+* Revisar estructura de datos de cada archivo
+* Crear archivo `.md` para documentar el proyecto
 
----
-
-## 🟡 2. Tablas y estructura de datos
-```
-| Tabla | Archivo | Columnas | Registros | Observaciones |
-|-------|--------|----------|----------|---------------|
-| Clientes | `clientes.xlsx` | 5 | 100 | Revisar duplicados en `nombre_cliente` y `email` |
-| Productos | `productos.xlsx` | 4 | 100 | Verificar categoría y duplicados en `nombre_producto` |
-| Ventas | `ventas.xlsx` | 6 | 120 | Clientes pueden tener varias ventas |
-| Detalle_Ventas | `detalle_ventas.xlsx` | 6 | 343 | Cada venta puede tener varios productos |
-```
-> 📌 Notas de validación: fechas correctas, IDs positivos, precios > 0, integridad referencial
+💡 *Tip: Mantener los archivos originales intactos como respaldo.*
 
 ---
 
-## 🔵 3. Requisitos de instalación
+## 🟡 2. Tablas y Estructura de Datos
+
+| Tabla          | Archivo              | Columnas | Registros | Observaciones                                         |
+| -------------- | -------------------- | -------- | --------- | ----------------------------------------------------- |
+| Clientes       | `clientes.csv`       | 5        | 100       | Revisar duplicados en `nombre_cliente` y `email`      |
+| Productos      | `productos.csv`      | 4        | 100       | Verificar categoría y duplicados en `nombre_producto` |
+| Ventas         | `ventas.csv`         | 6        | 120       | Clientes pueden tener varias ventas                   |
+| Detalle_Ventas | `detalle_ventas.csv` | 6        | 343       | Cada venta puede tener varios productos               |
+
+**Notas de validación:** fechas correctas, IDs positivos, precios > 0, integridad referencial.
+
+---
+
+## 🔵 3. Requisitos de Instalación
 
 ### 💻 Software
-- Python ≥ 3.8  
-- Editor: VS Code o PyCharm  
+
+* Python ≥ 3.8
+* Editor: VS Code o PyCharm
 
 ### 📦 Librerías
+
 ```bash
 pip install pandas numpy openpyxl matplotlib seaborn
-````
+```
 
-> ⚡ Tip: Mantener las versiones indicadas para reproducibilidad
+⚡ *Tip: Mantener las versiones indicadas para reproducibilidad.*
 
 ---
 
-## 🟠 4. Estándares de datos y validaciones
+## 🟠 4. Estándares de Datos y Validaciones
 
 | Concepto         | Estándar          |
 | ---------------- | ----------------- |
-| Fechas           | `YYYY-MM-DD`      |
+| Fechas           | YYYY-MM-DD        |
 | IDs              | Enteros positivos |
 | Precios/Importes | 2 decimales       |
 | Cantidad         | Enteros positivos |
 
-### Validaciones Clave
+**Validaciones Clave:**
 
-1. `fecha_alta` < `fecha` de venta
-2. `precio_unitario` > 0
-3. `importe` = `cantidad * precio_unitario`
-4. Integridad referencial de IDs
-5. Evitar duplicados en emails y nombres de productos
+* `fecha_alta < fecha de venta`
+* `precio_unitario > 0`
+* `importe = cantidad * precio_unitario`
+* Integridad referencial de IDs
+* Evitar duplicados en emails y nombres de productos
 
-> ✅ Esto garantiza KPIs confiables y análisis precisos
+✅ Esto garantiza KPIs confiables y análisis precisos.
 
 ---
 
-## 🟣 5. Problema y solución
+## 🟣 5. Problema y Solución
 
 ### ❗ Problema
 
@@ -75,37 +77,37 @@ pip install pandas numpy openpyxl matplotlib seaborn
 
 ### 💡 Solución
 
-* Integrar todas las tablas en un **DataFrame consolidado**
+* Integrar todas las tablas en un DataFrame consolidado
 * Limpiar y validar datos
 * Generar reportes y KPIs: ventas, clientes, ingresos, top 5 clientes
-* Identificar clientes sin compras
+* Identificar clientes sin compras recientes
 
 ---
 
-## 🟤 6. KPIs principales
+## 🟤 6. KPIs Principales
 
 * Clientes totales, activos e inactivos
 * Ventas totales y ticket promedio
 * Ingresos por categoría, medio de pago y ciudad
 * Top 5 clientes por monto total
 
-> 📊 Todos los KPIs se calculan a partir del DataFrame consolidado
+📊 Todos los KPIs se calculan a partir del DataFrame consolidado.
 
 ---
 
-## 🔴 7. Diagrama de flujo del proceso
+## 🔴 7. Diagrama de Flujo del Proceso
 
-```text
+```
 [Inicio] 
    │
    ▼
-[Cargar archivos XLSX en DataFrames]
+[Cargar archivos CSV en DataFrames]
    │
    ▼
 [EDA: inspección de columnas, tipos, nulos]
    │
    ▼
-[Limpieza y validación]
+[Limpieza y Validación]
    ├─ Validar formatos y tipos
    ├─ Corregir categorías
    └─ Recalcular importes
@@ -128,16 +130,16 @@ pip install pandas numpy openpyxl matplotlib seaborn
 
 ---
 
-## ⚡ 8. Pseudocódigo resumido
+## ⚡ 8. Pseudocódigo Resumido
 
-```text
+```
 INICIO_PROGRAMA
 
 // Cargar datos
-df_clientes = CARGAR_EXCEL("clientes.xlsx")
-df_productos = CARGAR_EXCEL("productos.xlsx")
-df_ventas = CARGAR_EXCEL("ventas.xlsx")
-df_detalle_ventas = CARGAR_EXCEL("detalle_ventas.xlsx")
+df_clientes = CARGAR_CSV("clientes.csv")
+df_productos = CARGAR_CSV("productos.csv")
+df_ventas = CARGAR_CSV("ventas.csv")
+df_detalle_ventas = CARGAR_CSV("detalle_ventas.csv")
 
 // Respaldo de datos originales
 COPIAR(df_clientes, df_productos, df_ventas, df_detalle_ventas)
@@ -170,7 +172,7 @@ FIN_PROGRAMA
 
 ---
 
-## 📌 9. Notas finales
+## 📌 9. Notas Finales
 
 * Mantener los datos originales intactos
 * Revisar las validaciones antes de generar análisis
