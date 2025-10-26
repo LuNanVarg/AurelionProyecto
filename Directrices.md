@@ -1,52 +1,72 @@
-# 📝 Manual de Instrucciones – Proyecto Aurelion
+📝 Directrices – Proyecto Aurelion
 
 ---
 
 ## 🟢 Preparación del Entorno
 
-Antes de comenzar, asegúrate de tener todo listo:
+Antes de comenzar, asegurate de tener todo listo:
 
 ### 💻 Software Requerido
-- Python ≥ 3.11  
-- Editor recomendado: VS Code o PyCharm  
+
+* Python ≥ 3.8
+* Editor recomendado: VS Code o PyCharm
 
 ### 📦 Instalación de Dependencias
-```bash
-pip install pandas numpy openpyxl
-````
 
-### 📁 Estructura de Carpetas
+```bash
+pip install pandas numpy openpyxl matplotlib seaborn
+```
+
+---
+
+## 📁 Estructura de Carpetas
 
 ```
-ProyectoAurelion/
-├─ datos/
-├─ reportes/
-└─ documentacion_interactiva-v2.py
+AurelionProyecto/
+│
+├── README.md                      # Manual y descripción del proyecto
+├── Informe.md                     # Documento principal del proyecto
+├── Directrices.md                 # Este archivo
+├── Interactivo_LeerArchivo.py     # Módulo para lectura y carga de archivos
+├── ExploradorDoc.py               # Programa interactivo de documentación
+├── LeerArchivo.py                 # Módulo para lectura y carga de archivos
+├── AnalisisVenta.ipynb            # Notebook interactivo con gráficos y KPIs
+│
+├── FlujoDelProceso.drawio         # Diagrama del flujo del programa
+│
+└── Aurelion/                      # Carpeta de datos
+   ├── clientes.csv                # Base de datos de clientes
+   ├── productos.csv               # Base de datos de productos
+   ├── ventas.csv                  # Base de datos de ventas
+   └── detalle_ventas.csv          # Base de datos de detalle de ventas
 ```
 
 ---
 
 ## 🟡 Verificación de Archivos
-```
-| Archivo                           | Función                              |
-| --------------------------------- | ------------------------------------ |
-| `Documentación-v2.md`             | Documentación completa del proyecto  |
-| `documentacion_interactiva-v2.py` | Programa interactivo para navegación |
-| `datos/`                          | Archivos de datos originales         |
-| `reportes/`                       | Carpeta para reportes generados      |
-```
+
+| Archivo                  | Función                               |
+| ------------------------ | ------------------------------------- |
+| `ExploradorDoc.py`       | Programa interactivo de documentación |
+| `InteractivoLeer.py`     | Módulo de lectura y carga de archivos |
+| `LeerArchivo.py`         | Módulo de lectura y carga de archivos |
+| `AnalisisVenta.ipynb`    | Notebook con visualizaciones y KPIs   |
+| `Aurelion/`              | Carpeta con archivos de datos (`csv`) |
+| `FlujoDelProceso.drawio` | Diagrama de flujo del programa        |
+| `Informe.md`             | Documento principal del proyecto      |
+
 ---
 
 ## 🔵 Ejecución del Programa Interactivo
 
-1. Abrir terminal en la carpeta raíz
+1. Abrir terminal en la carpeta raíz `AurelionProyecto/`.
 2. Ejecutar:
 
 ```bash
-python documentacion_interactiva-v2.py
+python ExploradorDoc.py
 ```
 
-3. Navegar usando el menú:
+3. Navegar usando el menú interactivo:
 
 * Introducción
 * Creación de carpetas y descarga de archivos
@@ -67,7 +87,7 @@ python documentacion_interactiva-v2.py
 Antes de generar análisis o reportes, verificar:
 
 * 📅 Fechas y números en formato correcto
-* 🔍 Detección y eliminación de duplicados en campos clave
+* 🔍 Eliminación de duplicados en campos clave
 * 💰 Precios e importes positivos y consistentes
 * ⏳ Fecha de alta del cliente anterior a compras; sin fechas futuras
 * 🔗 Integridad referencial entre tablas
@@ -116,3 +136,4 @@ Antes de generar análisis o reportes, verificar:
 📚 **Temática:** Integración y análisis de datos de ventas
 
 ---
+
