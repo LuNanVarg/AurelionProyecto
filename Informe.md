@@ -10,7 +10,7 @@
 * Colocar los archivos `.csv` dentro de `Aurelion/`
 * Abrir carpeta en VS Code → **Add Folder to Workspace**
 * Revisar estructura de datos de cada archivo
-* Crear archivo `.md` para documentar el proyecto
+* Crear archivos `.py` y `.md` para modular y documentar el proyecto
 
 💡 *Tip: Mantener los archivos originales intactos como respaldo.*
 
@@ -55,12 +55,12 @@ pip install pandas numpy openpyxl matplotlib seaborn
 | Precios/Importes | 2 decimales       |
 | Cantidad         | Enteros positivos |
 
-**Validaciones Clave:**
+**Validaciones Clave: (Centralizadas en el módulo `Limpiar_Datos.py`)**
 
 * `fecha_alta < fecha de venta`
 * `precio_unitario > 0`
 * `importe = cantidad * precio_unitario`
-* Integridad referencial de IDs
+* Integridad referencial de IDs (Clientes-Ventas, Productos-DetalleVentas)
 * Evitar duplicados en emails y nombres de productos
 
 ✅ Esto garantiza KPIs confiables y análisis precisos.
@@ -77,10 +77,10 @@ pip install pandas numpy openpyxl matplotlib seaborn
 
 ### 💡 Solución
 
-* Integrar todas las tablas en un DataFrame consolidado
-* Limpiar y validar datos
-* Generar reportes y KPIs: ventas, clientes, ingresos, top 5 clientes
-* Identificar clientes sin compras recientes
+* Implementar el módulo `Limpiar_Datos.py` para integrar todas las tablas en un DataFrame consolidado.
+* Limpiar y validar datos de forma estandarizada.
+* Generar reportes y KPIs: ventas, clientes, ingresos, top 5 clientes.
+* Identificar clientes sin compras recientes.
 
 ---
 
@@ -107,16 +107,13 @@ pip install pandas numpy openpyxl matplotlib seaborn
 [EDA: inspección de columnas, tipos, nulos]
    │
    ▼
-[Limpieza y Validación]
-   ├─ Validar formatos y tipos
-   ├─ Corregir categorías
-   └─ Recalcular importes
+[LLAMADA al módulo Limpiar_Datos.py (ETL)]
+   ├─ Conversión de tipos y Formatos
+   ├─ Integración (Merge de las 4 talbas)
+   └─ Validación de integridad referencial
    │
    ▼
-[Integración de datos: merges]
-   │
-   ▼
-[Validación de integridad]
+[Generar DataFrame Consolidado (Limpio)]
    │
    ▼
 [Calcular KPIs y generar reportes]
@@ -147,25 +144,17 @@ COPIAR(df_clientes, df_productos, df_ventas, df_detalle_ventas)
 // EDA
 INSPECCIONAR(df_clientes, df_productos, df_ventas, df_detalle_ventas)
 
-// Limpieza y validación
-CONVERTIR_FECHAS()
-VERIFICAR_DUPLICADOS()
-CORREGIR_CATEGORIAS()
-RECALCULAR_IMPORTES()
-VALIDAR_INTEGRIDAD()
-
-// Integración
-MERGE(df_ventas, df_detalle_ventas)
-MERGE(result, df_productos)
-MERGE(result, df_clientes)
+// Limpieza, Validación e Integración (Módulo Limpiar_Datos.py)
+// La función Limpiar_Datos() maneja toda la lógica interna (tipos, validaciones, merges).
+df_consolidado = LLAMAR_FUNCION(Limpiar_Datos, df_clientes, df_productos, df_ventas, df_detalle_ventas)
 
 // KPIs
-CALCULAR_CLIENTES_ACTIVOS_INACTIVOS()
-CALCULAR_TOTAL_VENTAS_INGRESOS_TICKET()
-GENERAR_REPORTES()
+CALCULAR_CLIENTES_ACTIVOS_INACTIVOS(df_consolidado)
+CALCULAR_TOTAL_VENTAS_INGRESOS_TICKET(df_consolidado)
+GENERAR_REPORTES(df_consolidado)
 
 // Exportación
-GUARDAR_CSV(result)
+GUARDAR_CSV(df_consolidado, "ventas_completo_LIMPIO.csv")
 
 FIN_PROGRAMA
 ```
@@ -189,3 +178,4 @@ FIN_PROGRAMA
 📚 **Temática:** Integración y análisis de datos de ventas
 
 ---
+
