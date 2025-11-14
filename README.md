@@ -19,7 +19,7 @@ AurelionProyecto/
 ├── README.md                      # Este archivo
 ├── Informe.md                     # Documento principal del proyecto
 ├── Directrices.md                 # Registro del análisis y mejoras
-├── Interactivo_LeerArchivo.py     # Módulo para lectura y carga de archivos
+├── InteractivoLeer.py             # Módulo para lectura y carga de archivos
 ├── ExploradorDoc.py               # Navegador interactivo de documentación (terminal)
 ├── LeerArchivo.py                 # Módulo para lectura y carga de archivos
 ├── AnalisisVenta.ipynb            # Notebook interactivo con gráficos y KPIs
@@ -82,12 +82,29 @@ pip install pandas numpy openpyxl matplotlib seaborn
 
 ---
 
+### 📊 Alcance del Proyecto
+
+El programa integra y analiza información de cuatro bases de datos:
+
+* `clientes.xlsx`
+* `productos.xlsx`
+* `ventas.xlsx`
+* `detalle_ventas.xlsx`
+
+Permite generar reportes y métricas clave como:
+
+* Ventas por cliente, categoría, medio de pago y ciudad.
+* Ingreso total, ticket promedio y clientes inactivos.
+* Validaciones de calidad de datos y consistencia referencial.
+
+---
+
 ### 🧱 Modelos incluidos
 
 * **Modelo Conceptual (ER):** Relaciones entre Clientes, Ventas, Detalle_Ventas y Productos.
 * **Modelo Lógico:** Definición de tablas y claves principales/foráneas.
 * **Modelo Físico:** Representación de las bases de datos en formato `.csv`.
-* **Diagrama de Flujo:** Representa el proceso de análisis y visualización.
+* **Diagrama de Flujo:** Descripción paso a paso del proceso de integración y análisis.
 
 ---
 
