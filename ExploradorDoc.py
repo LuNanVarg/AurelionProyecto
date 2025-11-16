@@ -55,7 +55,7 @@ def listar_archivos(carpeta: str, extension: Optional[str] = None) -> List[str]:
 
 def leer_archivo(ruta: str) -> Optional[str]:
     """ Lee un archivo Markdown (.md) con diferentes codificaciones posibles. """
-    p = Path(ruta) # Convierte la ruta a un objeto Path (más fácil de manejor)
+    p = Path(ruta) # Convierte la ruta a un objeto Path
     if not p.exists():
         print(f"❌ Error: No se encontró el archivo '{'/Informe.md'}'")
         return None
@@ -244,6 +244,7 @@ if __name__ == "__main__":
     # Crea la ruta completa y ejecuta el explorador
     ruta = os.path.join(args.carpeta, archivo)
     ejecutar_explorador(ruta)
+
 
 
 
