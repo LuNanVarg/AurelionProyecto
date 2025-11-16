@@ -6,19 +6,21 @@
 
 import pandas as pd
 import os
+import numpy as np 
 
 # ---------------------------
 # Definir la ruta base
 # ---------------------------
+#  (Mantener la ruta que uses en tu PC)
 ruta_base = r"C:\Users\Luna\Desktop\Guayerd\AurelionProyecto\Aurelion"
 
 if not os.path.exists(ruta_base):
     print(f"❌ La carpeta '{ruta_base}' no existe.")
     exit()
 
-# ---------------------------
-# Funciones de utilidad
-# ---------------------------
+# ---------------------------------------------------------------------------
+# Funciones de utilidad (listar_csv, leer_csv, mostrar_preview, guardar_csv)
+# ---------------------------------------------------------------------------
 
 def listar_csv():
     """ Lista archivos CSV en la carpeta """
@@ -63,9 +65,9 @@ def guardar_csv(df, nombre_archivo):
     df.to_csv(ruta, index=False)
     print(f"\n✅ Archivo guardado: {ruta}")
 
-# ---------------------------
+# -----------------------------------
 # Variables globales para DataFrames
-# ---------------------------
+# -----------------------------------
 clientes = pd.DataFrame()
 productos = pd.DataFrame()
 ventas = pd.DataFrame()
@@ -85,8 +87,8 @@ def menu():
         print("="*60)
         print("[1] Listar archivos CSV disponibles")
         print("[2] Ver preview de un archivo CSV")
-        print("[3] Combinar Clientes + Ventas")
-        print("[4] Combinar Detalle de Ventas + Productos + Ventas + Clientes")
+        print("[3] Combinar Clientes + Ventas (Merge Simple)")
+        print("[4] Combinar y LIMPIAR DataFrames (Informe Completo)")
         print("[5] Guardar archivos combinados")
         print("[0] Salir")
         print("-"*60)
@@ -121,27 +123,28 @@ def menu():
             else:
                 print("⚠️ No se puede combinar clientes y ventas.")
 
-        elif opcion == "4":
+       elif opcion == "4":
+            print("\n--- INICIANDO PROCESO ETL COMPLETO ---")
             # Leer archivos necesarios
-            detalle_ventas = leer_csv("detalle_ventas.csv")
+            clientes = leer_csv("clientes.csv")
             productos = leer_csv("productos.csv")
             ventas = leer_csv("ventas.csv")
-            clientes = leer_csv("clientes.csv")
+            detalle_ventas = leer_csv("detalle_ventas.csv")
 
-            if not detalle_ventas.empty and not productos.empty and not ventas.empty:
-                detalle_prod = pd.merge(detalle_ventas, productos, on="id_producto", how="left")
-                ventas_completo = pd.merge(detalle_prod, ventas, on="id_venta", how="left")
-                if not clientes.empty:
-                    ventas_completo = pd.merge(ventas_completo, clientes, on="id_cliente", how="left")
-                mostrar_preview(ventas_completo, "Informe completo de ventas")
+            # LLAMADA A LA FUNCIÓN DE LIMPIEZA Y MERGE CON INTEGRIDAD (IMPORTADA)
+            if not clientes.empty and not productos.empty and not ventas.empty and not detalle_ventas.empty:
+                ventas_completo = limpiar_y_combinar_datos_v2(clientes, productos, ventas, detalle_ventas) 
+                
+                # Mostrar el resultado
+                mostrar_preview(ventas_completo, "Informe completo (Limpio y Consolidado)")
             else:
-                print("⚠️ No se puede generar informe completo: falta detalle_ventas, productos o ventas.")
+                print("⚠️ No se puede generar informe completo: faltan uno o más archivos base.")
 
         elif opcion == "5":
             if not clientes_ventas.empty:
                 guardar_csv(clientes_ventas, "clientes_ventas.csv")
             if not ventas_completo.empty:
-                guardar_csv(ventas_completo, "ventas_completo.csv")
+                guardar_csv(ventas_completo, "ventas_completo_LIMPIO.csv") # Se añade _LIMPIO para distinguirlo
             if clientes_ventas.empty and ventas_completo.empty:
                 print("⚠️ No hay archivos combinados para guardar.")
 
@@ -153,3 +156,9 @@ def menu():
 # ---------------------------
 if __name__ == "__main__":
     menu()
+
+# ------------------------------------------------------------------------------------------------------------------------
+# Para ejecutar este script, asegurarse de estar en la ruta correcta, agregar las lineas por orden dentro de la Terminal:
+# ".../Guayerd/AurelionProyecto"
+# python Interactivo_LeerArchivo.py
+# -------------------------------------------------------------------------------------------------------------------------
