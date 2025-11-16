@@ -2,13 +2,11 @@
 #   AurelionProyecto ==> Interactivo_LeerArchivo.py
 # -------------------------------------------------------------------------------
 #  Script interactivo para explorar, LIMPIAR y combinar CSV del proyecto Aurelion
-# -------------------------------------------------------
+# --------------------------------------------------------------------------------
 
 import pandas as pd
 import os
 import numpy as np 
-
-
 
 # ---------------------------\
 # Definir la ruta base
@@ -70,7 +68,6 @@ def guardar_csv(df, nombre_archivo):
 # ---------------------------------------------------------------------------
 # Función para combinar y limpiar DataFrames 
 # ---------------------------------------------------------------------------
-
 
 def ventas_completo_LIMPIO(clientes_df, productos_df, ventas_df, detalle_ventas_df):
     """
@@ -203,3 +200,4 @@ if __name__ == "__main__":
 # C:\Users\Luna\Desktop\Guayerd\AurelionProyecto
 # python Interactivo_LeerArchivo.py
 # -------------------------------------------------------------------------------------------------------------------------
+
