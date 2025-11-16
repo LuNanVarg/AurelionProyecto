@@ -1,17 +1,19 @@
-# -------------------------------------------------------
+# --------------------------------------------------------------------------------
 #   AurelionProyecto ==> Interactivo_LeerArchivo.py
-# -------------------------------------------------------
-#  Script interactivo para explorar y combinar CSV del proyecto Aurelion
+# -------------------------------------------------------------------------------
+#  Script interactivo para explorar, LIMPIAR y combinar CSV del proyecto Aurelion
 # -------------------------------------------------------
 
 import pandas as pd
 import os
 import numpy as np 
 
-# ---------------------------
+
+
+# ---------------------------\
 # Definir la ruta base
 # ---------------------------
-#  (Mantener la ruta que uses en tu PC)
+# (Mantener la ruta que uses en tu PC)
 ruta_base = r"C:\Users\Luna\Desktop\Guayerd\AurelionProyecto\Aurelion"
 
 if not os.path.exists(ruta_base):
@@ -64,6 +66,45 @@ def guardar_csv(df, nombre_archivo):
     ruta = os.path.join(ruta_base, nombre_archivo)
     df.to_csv(ruta, index=False)
     print(f"\n✅ Archivo guardado: {ruta}")
+
+# ---------------------------------------------------------------------------
+# Función para combinar y limpiar DataFrames 
+# ---------------------------------------------------------------------------
+
+
+def ventas_completo_LIMPIO(clientes_df, productos_df, ventas_df, detalle_ventas_df):
+    """
+    Combina los cuatro DataFrames (ventas, detalle_ventas, productos, clientes)
+    para crear el informe completo de ventas.
+    """
+    
+    print("\n⏳ Iniciando combinación de DataFrames (Merge)...")
+    
+    # 1. Unir Detalle_Ventas con Ventas (a nivel de transacción)
+    df_merged = pd.merge(detalle_ventas_df, ventas_df, 
+                         on='id_venta', how='left', suffixes=('_detalle', '_venta'))
+
+    # 2. Unir con Productos (para obtener descripción y precio)
+    df_merged = pd.merge(df_merged, productos_df, 
+                         on='id_producto', how='left', suffixes=('', '_prod'))
+
+    # 3. Unir con Clientes (para obtener datos del comprador)
+    df_merged = pd.merge(df_merged, clientes_df, 
+                         on='id_cliente', how='left', suffixes=('', '_cli'))
+    
+    # --- Pequeña limpieza/cálculo ---
+    
+    # **CORRECCIÓN CLAVE:** Solo renombramos la fecha. 
+    # Usaremos la columna 'precio_unitario' que ya existe después de los merges.
+    df_merged = df_merged.rename(columns={'fecha_venta': 'fecha'})
+    
+    # Calcular el total de la línea de venta, usando la columna correcta.
+    # El archivo subido confirma que la columna se llama 'precio_unitario'.
+    df_merged['total_linea'] = df_merged['precio_unitario'] * df_merged['cantidad']
+    
+    print("✅ Combinación completada. DataFrame listo.")
+    return df_merged
+
 
 # -----------------------------------
 # Variables globales para DataFrames
@@ -123,7 +164,7 @@ def menu():
             else:
                 print("⚠️ No se puede combinar clientes y ventas.")
 
-       elif opcion == "4":
+        elif opcion == "4":
             print("\n--- INICIANDO PROCESO ETL COMPLETO ---")
             # Leer archivos necesarios
             clientes = leer_csv("clientes.csv")
@@ -133,7 +174,7 @@ def menu():
 
             # LLAMADA A LA FUNCIÓN DE LIMPIEZA Y MERGE CON INTEGRIDAD (IMPORTADA)
             if not clientes.empty and not productos.empty and not ventas.empty and not detalle_ventas.empty:
-                ventas_completo = limpiar_y_combinar_datos_v2(clientes, productos, ventas, detalle_ventas) 
+                ventas_completo = ventas_completo_LIMPIO(clientes, productos, ventas, detalle_ventas) 
                 
                 # Mostrar el resultado
                 mostrar_preview(ventas_completo, "Informe completo (Limpio y Consolidado)")
@@ -159,6 +200,6 @@ if __name__ == "__main__":
 
 # ------------------------------------------------------------------------------------------------------------------------
 # Para ejecutar este script, asegurarse de estar en la ruta correcta, agregar las lineas por orden dentro de la Terminal:
-# ".../Guayerd/AurelionProyecto"
+# C:\Users\Luna\Desktop\Guayerd\AurelionProyecto
 # python Interactivo_LeerArchivo.py
 # -------------------------------------------------------------------------------------------------------------------------
